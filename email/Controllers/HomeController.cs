@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Nustache.Core;
 
 namespace email.Controllers
 {
@@ -10,6 +11,9 @@ namespace email.Controllers
     {
         public ActionResult Index()
         {
+            var data = new { name = "SB", language = "JAVA", sender = "Yo" };
+            var str = Render.FileToString(Server.MapPath("~/Template/MailTemplate.html"), data);
+            ViewBag.Wer = str;
             return View();
         }
 
